@@ -35,7 +35,5 @@ namespace EventApp.Data
 
         [DisplayName("Cost")]
         public decimal VenueCost { get; set; }
-
-
     }
 }

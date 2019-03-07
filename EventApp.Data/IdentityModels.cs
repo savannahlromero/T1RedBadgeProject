@@ -35,6 +35,8 @@ namespace RedBadgeBackend.Data
         }
 
         public DbSet<Venue> Venues { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,5 +1,6 @@
 ﻿using EventApp.Data;
 using EventApp.Models;
+using EventApp.Models.VenueModels;
 using RedBadgeBackend.Data;
 using System;
 using System.Collections.Generic;
@@ -52,55 +53,56 @@ namespace EventApp.Services
             }
         }
 
-        //public MealDetail GetMealById(int mealId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Meals
-        //                .Single(e => e.MealId == mealId);
-        //        return
-        //            new MealDetail
-        //            {
-        //                MealId = entity.MealId,
-        //                MealName = entity.MealName,
-        //                MealDescription = entity.MealDescription,
-        //                CreatedUtc = entity.CreatedUtc
-        //            };
-        //    }
+        public VenueDetail GetVenueById(int venueId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Venues
+                        .Single(e => e.VenueID == venueId);
+                return
+                    new VenueDetail
+                    {
+                        VenueName = entity.VenueName,
+                        VenueDescription = entity.VenueDescription,
+                        VenueLocation = entity.VenueLocation,
+                        VenueCapacity = entity.VenueCapacity,
+                        VenueCost = entity.VenueCost
+                    };
+            }
 
-        //}
+        }
 
-        //public bool UpdateMeal(MealEdit model)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Meals
-        //                .Single(e => e.MealId == model.MealId);
+        public bool UpdateVenue(VenueEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Venues
+                        .Single(e => e.VenueID == model.VenueID);
 
-        //        entity.MealName = model.MealName;
-        //        entity.MealDescription = model.MealDescription;
+                entity.VenueName = model.VenueName;
+                entity.VenueDescription = model.VenueDescription;
 
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
-        //public bool DeleteMeal(int noteId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Meals
-        //                .Single(e => e.MealId == noteId);
+        public bool DeleteVenue(int venueId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Venues
+                        .Single(e => e.VenueID == venueId);
 
-        //        ctx.Meals.Remove(entity);
+                ctx.Venues.Remove(entity);
 
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using RedBadgeBackend.Providers;
 using RedBadgeBackend.Models;
+using RedBadgeBackend.Data;
 
 namespace RedBadgeBackend
 {

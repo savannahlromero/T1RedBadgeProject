@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace EventApp.Models.ReviewModels
 {
-    class ReviewEdit
+    public class ReviewEdit
     {
+        public int ReviewID { get; set; }
+        public int VenueID { get; set;}
+        public int VenueName { get; set; }
+        public int VenueRating { get; set; }
+        public string Comments { get; set; }
     }
 }

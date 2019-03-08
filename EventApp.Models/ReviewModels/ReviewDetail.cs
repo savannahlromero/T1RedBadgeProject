@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace EventApp.Models.ReviewModels
 {
-    class ReviewDetail
+    public class ReviewDetail
     {
+        public int ReviewID { get; set; }
+        public int VenueID { get; set; }
+        public string VenueName { get; set; }
+        public int VenueRating { get; set; }
+        public string Comments { get; set; }
+        public string VenueDescription { get; set; }
+
+        public override string ToString() => $"[{VenueID}] {VenueName}";
     }
 }

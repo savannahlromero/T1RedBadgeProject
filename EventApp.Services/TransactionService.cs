@@ -42,6 +42,10 @@ namespace EventApp.Services
                    ctx
                      .Transactions
                      .Where(vote => vote.ApplicationUserId == _userID || isAdmin)
+
+                var query =
+                   ctx
+                     .Transactions
                      .Select(
                          e =>
                              new TransactionListItem

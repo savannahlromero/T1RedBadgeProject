@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -20,6 +21,8 @@ namespace RedBadgeBackend.Data
             // Add custom user claims here
             return userIdentity;
         }
+
+  
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -34,7 +37,7 @@ namespace RedBadgeBackend.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<Venue> Venues { get; set; }
+        public ISet<Venue> Venues { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Review> Reviews { get; set; }
 

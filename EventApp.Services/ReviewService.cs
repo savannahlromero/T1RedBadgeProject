@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace EventApp.Services
 {
-    class ReviewService
+    public class ReviewService
     {
         private readonly Guid _userID;
 
@@ -22,7 +22,7 @@ namespace EventApp.Services
         public ReviewService(Guid userID)
         {
             _userID = userID;
-        } 
+        }
 
         public bool CreateVenue(VenueCreate model)
         {
@@ -47,11 +47,11 @@ namespace EventApp.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                //var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
-                //var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
+                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
 
-                //var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
-                //bool isAdmin = admins.Where(a => a.UserId == _userId.ToString()).Count() != 0;
+                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                bool isAdmin = admins.Where(a => a.UserId == _userId.ToString()).Count() != 0;
                 var query =
                     ctx
                         .Reviews

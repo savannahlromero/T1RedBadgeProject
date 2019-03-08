@@ -78,6 +78,12 @@ namespace EventApp.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+
+                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
+
+                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                bool isAdmin = admins.Where(a => a.UserId == _userId.ToString()).Count() != 0;
                 var entity =
                     ctx
                         .Venues
@@ -89,11 +95,26 @@ namespace EventApp.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+                var entity =
+                    ctx
+                        .Venues
+                        .Single(e => e.VenueID == model.VenueID);
 
+                entity.VenueName = model.VenueName;
+                entity.VenueDescription = model.VenueDescription;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
         public bool DeleteVenue(int venueId)
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
+
+                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                bool isAdmin = admins.Where(a => a.UserId == _userId.ToString()).Count() != 0;
                 var entity =
                     ctx
                         .Venues
@@ -101,6 +122,11 @@ namespace EventApp.Services
 
                 ctx.Venues.Remove(entity);
 
+                var entity =
+                    ctx
+                        .Venues
+                        .Single(e => e.VenueID == venueId);
+                ctx.Venues.Remove(entity);
                 return ctx.SaveChanges() == 1;
             }
         }

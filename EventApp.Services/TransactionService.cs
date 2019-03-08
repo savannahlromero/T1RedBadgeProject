@@ -33,6 +33,16 @@ namespace EventApp.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
+                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
+
+                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                bool isAdmin = admins.Where(a => a.UserId == _userId.ToString()).Count() != 0;
+                var query =
+                   ctx
+                     .Transactions
+                     .Where(vote => vote.ApplicationUserId == _userID || isAdmin)
+
                 var query =
                    ctx
                      .Transactions

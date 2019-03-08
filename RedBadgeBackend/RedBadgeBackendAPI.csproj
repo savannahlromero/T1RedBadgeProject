@@ -216,6 +216,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VenuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -318,6 +319,14 @@
     <ProjectReference Include="..\EventApp.Data\EventApp.Data.csproj">
       <Project>{CD7967E0-D621-4810-95B7-735C286B8A78}</Project>
       <Name>EventApp.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventApp.Models\EventApp.Models.csproj">
+      <Project>{C7EF9024-21DA-448B-9635-45DB586B230E}</Project>
+      <Name>EventApp.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventApp.Services\EventApp.Services.csproj">
+      <Project>{A7A1EF58-5CAC-4E23-8012-AF14A733B172}</Project>
+      <Name>EventApp.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

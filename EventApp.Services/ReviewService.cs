@@ -43,7 +43,7 @@ namespace EventApp.Services
             }
         }
 
-        public IEnumerable<ReviewListItem> GetReviews(bool isAdmin)
+        public IEnumerable<ReviewListItem> GetReviews(bool isTotesAdmin)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -51,11 +51,11 @@ namespace EventApp.Services
                 var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
 
                 var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
-                bool isAdmin = admins.Where(a => a.UserId == _userId.ToString()).Count() != 0;
+                bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
                 var query =
                     ctx
                         .Reviews
-                        .Where(vote => vote.ApplicationUserId == _userID || isAdmin)
+                        .Where(vote => vote.ApplicationUserID == _userID || isAdmin)
                         .Select(
                         e =>
                             new ReviewListItem

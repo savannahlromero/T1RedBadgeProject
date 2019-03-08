@@ -1,5 +1,7 @@
-﻿using System;
+﻿using RedBadgeBackend.Data;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -14,12 +16,17 @@ namespace EventApp.Data
         public int TransactionID { get; set; }
 
         [Required]
+        public Guid ApplicationUserID { get; set; }
+        public virtual ApplicationUser User { get; set; }
+
+        [Required]
         [DisplayName("User #")]
         public int UserID { get; set; }
 
         [Required]
         [DisplayName("Venue #")]
         public int VenueID { get; set; }
+        public virtual Venue Venue { get; set; }
 
         [Required]
         [DisplayName("Cost")]

@@ -82,6 +82,10 @@
     <Compile Include="Migrations\201903071641187_initialmigrate.Designer.cs">
       <DependentUpon>201903071641187_initialmigrate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903081529593_weBrokeTheCodeAndNowWeMaybeFixedIt.cs" />
+    <Compile Include="Migrations\201903081529593_weBrokeTheCodeAndNowWeMaybeFixedIt.Designer.cs">
+      <DependentUpon>201903081529593_weBrokeTheCodeAndNowWeMaybeFixedIt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Review.cs" />
@@ -95,6 +99,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201903071641187_initialmigrate.resx">
       <DependentUpon>201903071641187_initialmigrate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903081529593_weBrokeTheCodeAndNowWeMaybeFixedIt.resx">
+      <DependentUpon>201903081529593_weBrokeTheCodeAndNowWeMaybeFixedIt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

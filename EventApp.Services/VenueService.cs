@@ -1,5 +1,6 @@
 ﻿using EventApp.Data;
 using EventApp.Models;
+using EventApp.Models.VenueModels;
 using RedBadgeBackend.Data;
 using System;
 using System.Collections.Generic;
@@ -52,55 +53,66 @@ namespace EventApp.Services
             }
         }
 
-        //public MealDetail GetMealById(int mealId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Meals
-        //                .Single(e => e.MealId == mealId);
-        //        return
-        //            new MealDetail
-        //            {
-        //                MealId = entity.MealId,
-        //                MealName = entity.MealName,
-        //                MealDescription = entity.MealDescription,
-        //                CreatedUtc = entity.CreatedUtc
-        //            };
-        //    }
+        public VenueDetail GetVenueById(int venueId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Venues
+                        .Single(e => e.VenueID == venueId);
+                return
+                    new VenueDetail
+                    {
+                        VenueName = entity.VenueName,
+                        VenueDescription = entity.VenueDescription,
+                        VenueLocation = entity.VenueLocation,
+                        VenueCapacity = entity.VenueCapacity,
+                        VenueCost = entity.VenueCost
+                    };
+            }
 
-        //}
+        }
 
-        //public bool UpdateMeal(MealEdit model)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Meals
-        //                .Single(e => e.MealId == model.MealId);
+        public bool UpdateVenue(VenueEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
 
-        //        entity.MealName = model.MealName;
-        //        entity.MealDescription = model.MealDescription;
+                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                bool isAdmin = admins.Where(a => a.UserId == _userId.ToString()).Count() != 0;
+                var entity =
+                    ctx
+                        .Venues
+                        .Single(e => e.VenueID == model.VenueID);
 
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
+                entity.VenueName = model.VenueName;
+                entity.VenueDescription = model.VenueDescription;
 
-        //public bool DeleteMeal(int noteId)
-        //{
-        //    using (var ctx = new ApplicationDbContext())
-        //    {
-        //        var entity =
-        //            ctx
-        //                .Meals
-        //                .Single(e => e.MealId == noteId);
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
-        //        ctx.Meals.Remove(entity);
+        public bool DeleteVenue(int venueId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
 
-        //        return ctx.SaveChanges() == 1;
-        //    }
-        //}
+                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                bool isAdmin = admins.Where(a => a.UserId == _userId.ToString()).Count() != 0;
+                var entity =
+                    ctx
+                        .Venues
+                        .Single(e => e.VenueID == venueId);
+
+                ctx.Venues.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

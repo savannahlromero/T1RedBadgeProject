@@ -99,6 +99,7 @@ namespace EventApp.Services
 
                 entity.VenueID = model.VenueID;
                 entity.VenueRating = model.VenueRating;
+                entity.Comments = model.Comments;
 
                 return ctx.SaveChanges() == 1;
             }

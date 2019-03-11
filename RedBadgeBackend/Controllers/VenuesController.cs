@@ -1,4 +1,5 @@
-﻿using EventApp.Models;
+﻿using EventApp.Data;
+using EventApp.Models;
 using EventApp.Models.VenueModels;
 using EventApp.Services;
 using Microsoft.AspNet.Identity;
@@ -24,8 +25,8 @@ namespace RedBadgeBackend.Controllers
         public IHttpActionResult Get(int id)
         {
             VenueService venueService = CreateVenueService();
-            var note = venueService.GetVenueById(id);
-            return Ok(note);
+            var venue = venueService.GetVenueById(id);
+            return Ok(venue);
         }
 
         public IHttpActionResult Post(VenueCreate venue)

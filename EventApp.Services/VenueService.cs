@@ -91,11 +91,11 @@ namespace EventApp.Services
             using (var ctx = new ApplicationDbContext())
             {
 
-                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
-                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
+                //var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                //var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
 
-                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
-                bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
+                //var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                //bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
                 var entity =
                     ctx
                         .Venues
@@ -103,6 +103,10 @@ namespace EventApp.Services
 
                 entity.VenueName = model.VenueName;
                 entity.VenueDescription = model.VenueDescription;
+                entity.VenueAvailability = model.VenueAvailability;
+                entity.VenueCapacity = model.VenueCapacity;
+                entity.VenueCost = model.VenueCost;
+                entity.VenueLocation = model.VenueLocation;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -111,11 +115,11 @@ namespace EventApp.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
-                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
+                //var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                //var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
 
-                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
-                bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
+                //var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                //bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
                 var entity =
                     ctx
                         .Venues

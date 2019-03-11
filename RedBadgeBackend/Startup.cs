@@ -44,7 +44,7 @@ namespace RedBadgeBackend
                 //user.UserName = "Admin"; <---- IF WE NEED THIS WE HAVE IT
                 user.Email = "admin@admin.com";
 
-                string userPWD = "Admin1!";
+                string userPWD = "Admin123!";
 
                 var chkUser = UserManager.Create(user, userPWD);
 

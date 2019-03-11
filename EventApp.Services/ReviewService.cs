@@ -24,38 +24,36 @@ namespace EventApp.Services
             _userID = userID;
         }
 
-        public bool CreateVenue(VenueCreate model)
+        public bool CreateReview(ReviewCreate model)
         {
             var entity =
-                new Venue()
+                new Review()
                 {
-                    VenueName = model.VenueName,
-                    VenueDescription = model.VenueDescription,
-                    VenueLocation = model.VenueLocation,
-                    VenueCapacity = model.VenueCapacity,
-                    VenueCost = model.VenueCost
+                   VenueID = model.VenueID,
+                    VenueRating = model.VenueRating,
+                    Comments = model.Comments,
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Venues.Add(entity);
+                ctx.Reviews.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<ReviewListItem> GetReviews(bool isTotesAdmin)
+        public IEnumerable<ReviewListItem> GetReviews(/*bool isTotesAdmin*/)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
-                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
+                //var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                //var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
 
-                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
-                bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
+                //var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                //bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
                 var query =
                     ctx
                         .Reviews
-                        .Where(vote => vote.ApplicationUserID == _userID || isAdmin)
+                        .Where(vote => vote.ApplicationUserID == _userID /*|| isAdmin*/)
                         .Select(
                         e =>
                             new ReviewListItem

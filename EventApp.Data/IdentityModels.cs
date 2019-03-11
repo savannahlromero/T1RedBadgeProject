@@ -37,7 +37,7 @@ namespace RedBadgeBackend.Data
             return new ApplicationDbContext();
         }
 
-        public ISet<Venue> Venues { get; set; }
+        public DbSet<Venue> Venues { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Review> Reviews { get; set; }
 

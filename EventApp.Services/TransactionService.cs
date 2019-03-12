@@ -30,7 +30,8 @@ namespace EventApp.Services
                     TransactionID = model.TransactionID,
                     UserID = model.UserID,
                     VenueID = model.VenueID,
-                    VenueCost = model.VenueCost
+                    VenueCost = model.VenueCost,
+                    ApplicationUserID = _userID
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -44,15 +45,15 @@ namespace EventApp.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
-                var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
+                //var adminRoleId = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Id;
+                //var list = ctx.Users.Where(u => u.Roles.Any(r => r.RoleId == adminRoleId)).ToList();
 
-                var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
-                bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
+                //var admins = ctx.Roles.FirstOrDefault(u => u.Name.Equals("Admin")).Users;
+                //bool isAdmin = admins.Where(a => a.UserId == _userID.ToString()).Count() != 0;
                 var query =
                    ctx
                      .Transactions
-                     .Where(e => e.ApplicationUserID == _userID || isAdmin)
+                     .Where(e => e.ApplicationUserID == _userID /*|| isAdmin*/)
                      .Select(
                          e =>
                              new TransactionListItem

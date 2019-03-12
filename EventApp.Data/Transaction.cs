@@ -17,7 +17,7 @@ namespace EventApp.Data
 
         [Required]
         public Guid ApplicationUserID { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public virtual ApplicationUser user { get; set; }
 
         [Required]
         [DisplayName("User #")]

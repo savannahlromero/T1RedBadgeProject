@@ -11,7 +11,7 @@ namespace EventApp.Data
     public class Venue
     {
         [Key]
-        [DisplayName("Venue #")]
+        [DisplayName("Venue ID")]
         public int VenueID { get; set; }
 
         [Required]
@@ -27,7 +27,7 @@ namespace EventApp.Data
         public string VenueLocation { get; set; }
 
         [Required]
-        [DisplayName ("Capacity")]
+        [DisplayName("Capacity")]
         public int VenueCapacity { get; set; }
 
         [DisplayName("Availability")]
@@ -35,5 +35,6 @@ namespace EventApp.Data
 
         [DisplayName("Cost")]
         public decimal VenueCost { get; set; }
+
     }
 }

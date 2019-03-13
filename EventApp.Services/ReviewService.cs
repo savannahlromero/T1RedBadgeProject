@@ -29,9 +29,11 @@ namespace EventApp.Services
             var entity =
                 new Review()
                 {
+                    ReviewID = model.ReviewID,
                    VenueID = model.VenueID,
                     VenueRating = model.VenueRating,
                     Comments = model.Comments,
+                    ApplicationUserID = _userID
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -97,9 +99,11 @@ namespace EventApp.Services
                         .Reviews
                         .Single(e => e.ReviewID == model.ReviewID);
 
+                entity.ReviewID = model.ReviewID;
                 entity.VenueID = model.VenueID;
                 entity.VenueRating = model.VenueRating;
                 entity.Comments = model.Comments;
+                entity.ApplicationUserID = _userID;
 
                 return ctx.SaveChanges() == 1;
             }

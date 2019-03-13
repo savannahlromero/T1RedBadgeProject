@@ -19,7 +19,6 @@ namespace EventApp.Data
         public int VenueID { get; set;}
         public virtual Venue Venue { get; set; }
 
-
         [Required]
         public Guid ApplicationUserID { get; set; }
         public virtual ApplicationUser User { get; set; }

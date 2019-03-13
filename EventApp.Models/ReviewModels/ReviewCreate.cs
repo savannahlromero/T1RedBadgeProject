@@ -9,6 +9,7 @@ namespace EventApp.Models.ReviewModels
 {
     public class ReviewCreate
     {
+        public int ReviewID { get; set; }
 
         [Required]
         public int VenueID { get; set; }

@@ -29,9 +29,10 @@ namespace EventApp.Services
             var entity =
                 new Review()
                 {
-                   VenueID = model.VenueID,
+                    VenueID = model.VenueID,
                     VenueRating = model.VenueRating,
                     Comments = model.Comments,
+                    ApplicationUserID = _userID,
                 };
 
             using (var ctx = new ApplicationDbContext())

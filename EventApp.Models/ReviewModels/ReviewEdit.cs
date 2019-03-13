@@ -10,7 +10,7 @@ namespace EventApp.Models.ReviewModels
     {
         public int ReviewID { get; set; }
         public int VenueID { get; set;}
-        public int VenueName { get; set; }
+        public string VenueName { get; set; }
         public int VenueRating { get; set; }
         public string Comments { get; set; }
     }

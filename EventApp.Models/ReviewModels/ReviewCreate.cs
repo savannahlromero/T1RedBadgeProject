@@ -13,6 +13,8 @@ namespace EventApp.Models.ReviewModels
         [Required]
         public int VenueID { get; set; }
 
+        public string VenueName { get; set; }
+
         [Required]
         [Range(1, 5)]
         public int VenueRating { get; set; }

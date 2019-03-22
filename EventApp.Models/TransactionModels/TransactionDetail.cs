@@ -10,24 +10,11 @@ namespace EventApp.Models.TransactionModels
 {
     public class TransactionDetail
     {
-        [Key]
-        [DisplayName("Transaction #")]
         public int TransactionID { get; set; }
-
-        [Required]
-        [DisplayName("User #")]
-        public int UserID { get; set; }
-
-        [Required]
-        [DisplayName("Venue #")]
         public int VenueID { get; set; }
-
-        [Required]
-        [DisplayName("Cost")]
-        public decimal VenueCost { get; set; }
-
-        //[Required]
-        //[DisplayName("Date")]
+        public string VenueName { get; set; }
+        public int DaysRenting { get; set; }
+        public decimal TransactionCost { get; set; }
 
     }
 }

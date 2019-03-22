@@ -84,6 +84,7 @@
     <Compile Include="ReviewModels\ReviewEdit.cs" />
     <Compile Include="ReviewModels\ReviewListItem.cs" />
     <Compile Include="TransactionModels\TransactionDetail.cs" />
+    <Compile Include="TransactionModels\TransactionEdit.cs" />
     <Compile Include="TransactionModels\TransactionListItem.cs" />
     <Compile Include="TransactionModels\TransactionCreate.cs" />
     <Compile Include="VenueModels\VenueCreate.cs" />

@@ -10,6 +10,8 @@ namespace EventApp.Models
 {
     public class VenueListItem
     {
+        [DisplayName("Venue ID")]
+        public int VenueID { get; set; }
         [DisplayName("Venue Name")]
         [MinLength(2, ErrorMessage = "That name is too short!")]
         public string VenueName { get; set; }

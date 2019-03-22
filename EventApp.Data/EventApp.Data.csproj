@@ -90,6 +90,10 @@
     <Compile Include="Migrations\201903121839358_tryingToFixGUID.Designer.cs">
       <DependentUpon>201903121839358_tryingToFixGUID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903221940031_changedTransactionsSection.cs" />
+    <Compile Include="Migrations\201903221940031_changedTransactionsSection.Designer.cs">
+      <DependentUpon>201903221940031_changedTransactionsSection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Review.cs" />
@@ -109,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903121839358_tryingToFixGUID.resx">
       <DependentUpon>201903121839358_tryingToFixGUID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903221940031_changedTransactionsSection.resx">
+      <DependentUpon>201903221940031_changedTransactionsSection.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

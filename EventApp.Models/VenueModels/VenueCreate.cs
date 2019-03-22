@@ -30,6 +30,8 @@ namespace EventApp.Models
         [DisplayName("Cost")]
         [Range(1, 1000000000)]
         public decimal VenueCost { get; set; }
+        [DisplayName("Availability")]
+        public bool VenueAvailability { get; set; }
 
         //public override string ToString() => VenueName + VenueDescription;
     }

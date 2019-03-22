@@ -20,16 +20,15 @@ namespace EventApp.Data
         public virtual ApplicationUser user { get; set; }
 
         [Required]
-        [DisplayName("User #")]
-        public int UserID { get; set; }
-
-        [Required]
         [DisplayName("Venue #")]
         public int VenueID { get; set; }
         public virtual Venue Venue { get; set; }
 
         [Required]
+        [DisplayName("Days Renting")]
+        public int DaysRenting { get; set; }
+
         [DisplayName("Cost")]
-        public decimal VenueCost { get; set; }
+        public decimal TransactionCost { get; set; }
     }
 }

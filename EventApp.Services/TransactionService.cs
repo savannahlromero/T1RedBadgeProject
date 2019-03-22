@@ -28,9 +28,8 @@ namespace EventApp.Services
                 new Transaction()
                 {
                     TransactionID = model.TransactionID,
-                    UserID = model.UserID,
                     VenueID = model.VenueID,
-                    VenueCost = model.VenueCost,
+                    TransactionCost = model.TransactionCost,
                     ApplicationUserID = _userID
                 };
 
@@ -59,9 +58,8 @@ namespace EventApp.Services
                              new TransactionListItem
                              {
                                  TransactionID = e.TransactionID,
-                                 UserID = e.UserID,
                                  VenueID = e.VenueID,
-                                 VenueCost = e.VenueCost
+                                 TransactionCost = e.TransactionCost
                              }
                      );
                 return query.ToArray();
@@ -80,10 +78,25 @@ namespace EventApp.Services
                     new TransactionDetail
                     {
                         TransactionID = entity.TransactionID,
-                        UserID = entity.UserID,
                         VenueID = entity.VenueID,
-                        VenueCost = entity.VenueCost
+                        TransactionCost = entity.TransactionCost
                     };
+            }
+        }
+
+        public bool UpdateTransaction(TransactionEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Transactions
+                        .Single(e => e.TransactionID == model.TransactionID);
+
+                entity.VenueID = model.VenueID;
+                entity.TransactionCost = model.TransactionCost;
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

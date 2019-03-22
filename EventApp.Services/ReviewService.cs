@@ -84,7 +84,8 @@ namespace EventApp.Services
                         VenueID = entity.VenueID,
                         VenueName = entity.Venue.VenueName,
                         VenueDescription = entity.Venue.VenueDescription,
-                        VenueRating = entity.VenueRating
+                        VenueRating = entity.VenueRating,
+                        Comments = entity.Comments
                     };
             }
         }

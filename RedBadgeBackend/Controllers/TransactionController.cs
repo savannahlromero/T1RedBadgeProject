@@ -39,6 +39,19 @@ namespace RedBadgeBackend.Controllers
             return Ok();
         }
 
+        public IHttpActionResult Put(TransactionEdit transaction)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateTransactionService();
+
+            if (!service.UpdateTransaction(transaction))
+                return InternalServerError();
+
+            return Ok();
+        }
+
         private TransactionService CreateTransactionService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

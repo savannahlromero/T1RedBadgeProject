@@ -33,7 +33,8 @@ namespace EventApp.Services
                     VenueDescription = model.VenueDescription,
                     VenueLocation = model.VenueLocation,
                     VenueCapacity = model.VenueCapacity,
-                    VenueCost = model.VenueCost
+                    VenueCost = model.VenueCost,
+                    VenueAvailability = true
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -54,6 +55,8 @@ namespace EventApp.Services
                          e =>
                              new VenueListItem
                              {
+
+                                 VenueID = e.VenueID,
                                  VenueName = e.VenueName,
                                  VenueDescription = e.VenueDescription,
                                  VenueLocation = e.VenueLocation,
@@ -76,6 +79,7 @@ namespace EventApp.Services
                 return
                     new VenueDetail
                     {
+                        VenueID = entity.VenueID,
                         VenueName = entity.VenueName,
                         VenueDescription = entity.VenueDescription,
                         VenueLocation = entity.VenueLocation,

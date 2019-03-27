@@ -27,8 +27,9 @@ namespace EventApp.Services
             var entity =
                 new Transaction()
                 {
-                    TransactionID = model.TransactionID,
+                   
                     VenueID = model.VenueID,
+                    DaysRenting = model.DaysRenting,
                     TransactionCost = model.TransactionCost,
                     ApplicationUserID = _userID
                 };
@@ -59,6 +60,8 @@ namespace EventApp.Services
                              {
                                  TransactionID = e.TransactionID,
                                  VenueID = e.VenueID,
+                                 VenueName = e.Venue.VenueName,
+                                 DaysRenting = e.DaysRenting,
                                  TransactionCost = e.TransactionCost
                              }
                      );
@@ -79,6 +82,8 @@ namespace EventApp.Services
                     {
                         TransactionID = entity.TransactionID,
                         VenueID = entity.VenueID,
+                        VenueName = entity.Venue.VenueName,
+                        DaysRenting = entity.DaysRenting,
                         TransactionCost = entity.TransactionCost
                     };
             }
@@ -94,6 +99,7 @@ namespace EventApp.Services
                         .Single(e => e.TransactionID == model.TransactionID);
 
                 entity.VenueID = model.VenueID;
+                entity.DaysRenting = model.DaysRenting;
                 entity.TransactionCost = model.TransactionCost;
 
                 return ctx.SaveChanges() == 1;

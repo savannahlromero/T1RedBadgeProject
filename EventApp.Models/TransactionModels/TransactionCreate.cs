@@ -10,7 +10,6 @@ namespace EventApp.Models.TransactionModels
 {
     public class TransactionCreate
     {
-        public int TransactionID { get; set; }
         public int VenueID { get; set; }
         public string VenueName { get; set; }
         public int DaysRenting { get; set; }
